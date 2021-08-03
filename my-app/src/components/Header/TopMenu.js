@@ -1,4 +1,4 @@
-let TopMenu = () => {
+const TopMenu = () => {
   return (
     <div>menu</div>
   );
