@@ -1,0 +1,11 @@
+.App {
+  display: block;
+  background-color: rgb(14, 88, 184);
+}
+.Active{
+  background-color: rgb(60, 187, 28);
+}
+.Text{
+  color:red;
+  font-size:20px;
+}
