@@ -4,6 +4,8 @@
 }
 .Active{
   background-color: rgb(60, 187, 28);
+  position: sticky;
+  top:0px;
 }
 .Text{
   color:red;
