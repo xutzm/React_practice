@@ -1,11 +1,8 @@
 
-import Header from './Header';
-
 const Home = () => {
   return(
 <div>
-  <Header/>
-  HOME PAGE
+<h1> HOME PAGE</h1>
 </div>
   );
 }

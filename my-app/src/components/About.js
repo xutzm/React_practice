@@ -1,10 +1,8 @@
-import Header from './Header';
 
 const About = () => {
   return(
 <div>
-  <Header/>
-  ABOUT PAGE
+<h1> ABOUT PAGE</h1>
 </div>
   );
 }

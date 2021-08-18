@@ -1,13 +1,16 @@
-import classes from './TopMenu.module.css';
+import { NavLink } from 'react-router-dom';
+import styles from './TopMenu.module.css';
 
-let classesAppActive = `${classes.App} ${classes.Active}`;
+let classesAppActive = `${styles.App} ${styles.App2}`;
 const TopMenu = () => {
   return (
     <div className={classesAppActive}>
       <nav>
-        <a href="/home">home</a>
+        <NavLink to="/home" activeClassName={styles.activeLink}>home</NavLink>
         <br/>
-        <a href="/about">about</a>
+        <NavLink to="/about" activeClassName={styles.activeLink}>about</NavLink>
+        <br/>
+        <NavLink to="/posts" activeClassName={styles.activeLink}>posts</NavLink>
       </nav>
     </div>
   );

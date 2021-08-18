@@ -2,12 +2,14 @@
   display: block;
   background-color: rgb(14, 88, 184);
 }
-.Active{
-  background-color: rgb(60, 187, 28);
+.App2{
   position: sticky;
   top:0px;
 }
 .Text{
   color:red;
   font-size:20px;
+}
+.activeLink{
+  color:chartreuse;
 }

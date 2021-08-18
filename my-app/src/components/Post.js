@@ -1,4 +1,5 @@
 
+import { NavLink } from 'react-router-dom';
 import classes from './Post.module.css';
 
 
@@ -7,9 +8,9 @@ const Post = (props) => {
   // debugger;
   return (
     <div className={classes.App}>
-      <p>
+      <NavLink to='posts/1'>
         ПОСТ {props.text}
-      </p>
+      </NavLink>
     </div>
   );
 }

@@ -4,19 +4,23 @@ import './App.css';
 import {BrowserRouter,Route} from "react-router-dom";
 
 
-import Post from './components/Post';
+
 import Home from './components/Home';
 import About from './components/About';
+import Header from './components/Header';
+import Posts from './components/Posts';
 
 function App() {
   return (
     <BrowserRouter>
+    <Header/>
     <div className="App">
 
-      <Post text="Test"/>
+
     </div>
     <Route path="/home" component={Home}/>
     <Route path="/about" component={About}/>
+    <Route path="/posts" component={Posts}/>
     </BrowserRouter>
   );
 }
