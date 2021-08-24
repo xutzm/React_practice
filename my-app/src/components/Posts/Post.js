@@ -8,7 +8,7 @@ const Post = (props) => {
   // debugger;
   return (
     <div className={classes.App}>
-      <NavLink to='posts/1'>
+      <NavLink to={'/posts/' + props.postId}>
         ПОСТ {props.text}
       </NavLink>
     </div>
