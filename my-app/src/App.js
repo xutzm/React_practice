@@ -10,7 +10,10 @@ import About from './components/About';
 import Header from './components/Header';
 import Posts from './components/Posts';
 
-function App() {
+function App(props) {
+
+
+
   return (
     <BrowserRouter>
     <Header/>
@@ -18,7 +21,7 @@ function App() {
     </div>
     <Route path="/home" component={Home}/>
     <Route path="/about" component={About}/>
-    <Route exact path="/posts" component={Posts}/>
+    <Route exact path="/posts" render={()=><Posts paramArr={props.paramArr}/>}/>
     </BrowserRouter>
   );
 }

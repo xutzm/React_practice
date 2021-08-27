@@ -1,14 +1,10 @@
 import Post from "./Posts/Post";
 
-const Posts = () => {
+const Posts = (props) => {
 
-let paramArr = [
-  {text:'test111',postId:'1'},
-  {text:'test221',postId:'2'},
-  {text:'test331',postId:'3'}
-]
 
-let PostsElems = paramArr.map((el)=>{
+
+let PostsElems = props.paramArr.map((el)=>{
   return <Post text={el.text} postId={el.postId}/>
 }
 )
