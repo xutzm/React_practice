@@ -1,19 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { rerenderAll } from './Rerender';
 import reportWebVitals from './reportWebVitals';
 import State from './components/Redux/State';
 
 
-
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App paramArr={State.paramArr}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+rerenderAll(State);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
