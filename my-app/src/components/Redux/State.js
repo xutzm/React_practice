@@ -1,4 +1,9 @@
-import {rerenderAll} from '../../Rerender'
+let rerenderAll = () =>{
+
+}
+export const subscribe = (observer)=>{
+  rerenderAll=observer
+}
 let State = {
 paramArr : [
         {text:'test11111',postId:'1'},
