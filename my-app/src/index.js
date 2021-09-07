@@ -1,24 +1,24 @@
 import reportWebVitals from './reportWebVitals';
-import State from './components/Redux/State';
+import store from './components/Redux/State';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import {addPost} from './components/Redux/State';
-import {subscribe} from './components/Redux/State';
+// import {addPost} from './components/Redux/State';
+// import {subscribe} from './components/Redux/State';
 
- const rerenderAll = (State)=>{
+ const rerenderAll = (state)=>{
   ReactDOM.render(
     <React.StrictMode>
-      <App paramArr={State.paramArr} addPost={addPost}/>
+      <App paramArr={store.getState().paramArr} addPost={store.addPost.bind(store)}/>
     </React.StrictMode>,
     document.getElementById('root')
   );
   }
 
-rerenderAll(State);
-subscribe(rerenderAll);
+rerenderAll(store.getState());
+store.subscribe(rerenderAll);
 
 
 // If you want to start measuring performance in your app, pass a function

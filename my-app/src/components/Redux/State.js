@@ -1,26 +1,36 @@
-let rerenderAll = () =>{
+let store = {
+  _State : {
+    paramArr : [
+            {text:'test11111',postId:'1'},
+            {text:'test2221',postId:'2'},
+            {text:'test3331',postId:'3'}
+          ]
+    },
+    getState(){
+      return this._State;
+    },
+    rerenderAll(){
+    },
+    addPost(postMessage){
+      let newPost = {
+        text:postMessage,
+        postId:'4'
+      };
+      this._State.paramArr.push(newPost);
+      this.rerenderAll(this._State);
+      // let postText = postTextEl.current.value;
+      // alert(postText);
+    },
+    subscribe(observer){
+      this.rerenderAll=observer;
+    },
 
-}
-export const subscribe = (observer)=>{
-  rerenderAll=observer
-}
-let State = {
-paramArr : [
-        {text:'test11111',postId:'1'},
-        {text:'test2221',postId:'2'},
-        {text:'test3331',postId:'3'}
-      ]
+    
+    
 }
 
-export let addPost = (postMessage) =>{
-  let newPost = {
-    text:postMessage,
-    postId:'4'
-  };
-  State.paramArr.push(newPost);
-  rerenderAll(State);
-  // let postText = postTextEl.current.value;
-  // alert(postText);
-}
 
-export default State;
+
+
+
+export default store;
