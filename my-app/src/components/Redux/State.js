@@ -31,6 +31,13 @@ let store = {
     
 }
 
+const ADD_POST = "ADD-POST";
+export const addPostActionCreator = (postText) => {
+  return {
+   type:ADD_POST, 
+   postText:postText
+  } 
+}
 
 
 

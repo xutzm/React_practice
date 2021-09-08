@@ -1,5 +1,6 @@
 import React from "react";
 import Post from "./Posts/Post";
+import { addPostActionCreator } from "./Redux/State";
 
 const Posts = (props) => {
 
@@ -15,8 +16,8 @@ let postTextEl = React.createRef();
 let addPost = () =>{
   let postText = postTextEl.current.value;
   // alert(postText);
-  let action = {type:"ADD-POST", postText:postText};
-  props.dispatch(action);
+  // let action = {type:"ADD-POST", postText:postText};
+  props.dispatch(addPostActionCreator(postText));
 }
   
   return(
