@@ -11,21 +11,23 @@ let store = {
     },
     rerenderAll(){
     },
-    addPost(postMessage){
-      let newPost = {
-        text:postMessage,
-        postId:'4'
-      };
-      this._State.paramArr.push(newPost);
-      this.rerenderAll(this._State);
-      // let postText = postTextEl.current.value;
-      // alert(postText);
-    },
+
     subscribe(observer){
       this.rerenderAll=observer;
     },
 
-    
+    dispatch(action){
+      if(action.type==="ADD-POST"){
+        let newPost = {
+          text:action.postText,
+          postId:'4'
+        };
+        this._State.paramArr.push(newPost);
+        this.rerenderAll(this._State);
+        // let postText = postTextEl.current.value;
+        // alert(postText);
+      }
+    }
     
 }
 

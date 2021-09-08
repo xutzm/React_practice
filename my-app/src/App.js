@@ -21,7 +21,7 @@ function App(props) {
     </div>
     <Route path="/home" component={Home}/>
     <Route path="/about" component={About}/>
-    <Route exact path="/posts" render={()=><Posts paramArr={props.paramArr} addPost={props.addPost}/>}/>
+    <Route exact path="/posts" render={()=><Posts paramArr={props.paramArr} dispatch={props.dispatch}/>}/>
     </BrowserRouter>
   );
 }

@@ -15,7 +15,8 @@ let postTextEl = React.createRef();
 let addPost = () =>{
   let postText = postTextEl.current.value;
   // alert(postText);
-  props.addPost(postText);
+  let action = {type:"ADD-POST", postText:postText};
+  props.dispatch(action);
 }
   
   return(
