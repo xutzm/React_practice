@@ -1,6 +1,7 @@
+import postsReducer from './PostsReducer'
 let store = {
   _State : {
-    paramArr : [
+    postsArr : [
             {text:'test11111',postId:'1'},
             {text:'test2221',postId:'2'},
             {text:'test3331',postId:'3'}
@@ -17,27 +18,17 @@ let store = {
     },
 
     dispatch(action){
-      if(action.type==="ADD-POST"){
-        let newPost = {
-          text:action.postText,
-          postId:'4'
-        };
-        this._State.paramArr.push(newPost);
+      this._State.postsArr=postsReducer(this._State.postsArr,action);
+      // this._State.postsArr=postsReducer(this._State.postsArr,action);
+      // this._State.postsArr=postsReducer(this._State.postsArr,action);
+      //редьюсеры
+
+
         this.rerenderAll(this._State);
-        // let postText = postTextEl.current.value;
-        // alert(postText);
-      }
     }
     
 }
 
-const ADD_POST = "ADD-POST";
-export const addPostActionCreator = (postText) => {
-  return {
-   type:ADD_POST, 
-   postText:postText
-  } 
-}
 
 
 

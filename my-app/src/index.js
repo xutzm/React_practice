@@ -11,7 +11,7 @@ import App from './App';
  const rerenderAll = (state)=>{
   ReactDOM.render(
     <React.StrictMode>
-      <App paramArr={store.getState().paramArr} dispatch={store.dispatch.bind(store)}/>
+      <App postsArr={store.getState().postsArr} dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>,
     document.getElementById('root')
   );

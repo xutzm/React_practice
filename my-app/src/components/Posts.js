@@ -1,12 +1,12 @@
 import React from "react";
 import Post from "./Posts/Post";
-import { addPostActionCreator } from "./Redux/State";
+import { addPostActionCreator } from "./Redux/PostsReducer";
 
 const Posts = (props) => {
 
 
 
-let PostsElems = props.paramArr.map((el)=>{
+let PostsElems = props.postsArr.map((el)=>{
   return <Post text={el.text} postId={el.postId}/>
 }
 );
