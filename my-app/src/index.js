@@ -1,5 +1,6 @@
 import reportWebVitals from './reportWebVitals';
-import store from './components/Redux/State';
+import store from './components/Redux/Store';
+// import store from './components/Redux/ReduxStore'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -11,7 +12,7 @@ import App from './App';
  const rerenderAll = (state)=>{
   ReactDOM.render(
     <React.StrictMode>
-      <App postsArr={store.getState().postsArr} dispatch={store.dispatch.bind(store)}/>
+      <App postsArr={store.getState().postsPage.postsArr} dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>,
     document.getElementById('root')
   );

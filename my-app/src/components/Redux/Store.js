@@ -1,11 +1,13 @@
 import postsReducer from './PostsReducer'
 let store = {
   _State : {
-    postsArr : [
-            {text:'test11111',postId:'1'},
-            {text:'test2221',postId:'2'},
-            {text:'test3331',postId:'3'}
-          ]
+    postsPage: {
+      postsArr : [
+              {text:'test11111',postId:'1'},
+              {text:'test2221',postId:'2'},
+              {text:'test3331',postId:'3'}
+            ]
+        }
     },
     getState(){
       return this._State;
@@ -18,7 +20,7 @@ let store = {
     },
 
     dispatch(action){
-      this._State.postsArr=postsReducer(this._State.postsArr,action);
+      this._State.postsPage.postsArr=postsReducer(this._State.postsPage.postsArr,action);
       // this._State.postsArr=postsReducer(this._State.postsArr,action);
       // this._State.postsArr=postsReducer(this._State.postsArr,action);
       //редьюсеры
