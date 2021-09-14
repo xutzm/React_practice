@@ -3,14 +3,18 @@ import './App.css';
 
 import {BrowserRouter,Route} from "react-router-dom";
 
+//struct
+import Header from './components/Header/Header';
 
 
-import Home from './components/Home';
-import About from './components/About';
-import Header from './components/Header';
-import Posts from './components/Posts';
 
-function App(props) {
+//pages
+import IndexPage from './components/IndexPage';
+import InputTextPage from './components/InputTextPage';
+
+
+
+function App() {
 
 
 
@@ -19,9 +23,8 @@ function App(props) {
     <Header/>
     <div className="App">
     </div>
-    <Route path="/home" component={Home}/>
-    <Route path="/about" component={About}/>
-    <Route exact path="/posts" render={()=><Posts postsArr={props.state.postsPage.postsArr} dispatch={props.dispatch}/>}/>
+    <Route path="/IndexPage" component={IndexPage}/>
+    <Route path="/InputTextPage" component={InputTextPage}/>
     </BrowserRouter>
   );
 }

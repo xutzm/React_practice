@@ -14,7 +14,7 @@ const About = () => {
 <div>
   <input type='text' ref={inputEl}></input>
   <button onClick={SendInput}>send</button>
-<h1> ABOUT PAGE</h1>
+<h1> InputTextPage</h1>
 </div>
   );
 }
