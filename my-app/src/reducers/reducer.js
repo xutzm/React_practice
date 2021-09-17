@@ -1,4 +1,8 @@
-let state = 0;
+
+const initialState = {
+    count:0,
+}
+
 
 
 //actions
@@ -11,9 +15,9 @@ const decrementAction = {type:'decrement',amount:2};
 function UpdateState(state,action){
     switch(action.type){
         case 'increment':
-            return state+action.amount;
+            return {count: state.count+action.amount};
         case 'decrement':
-            return state-action.amount;
+            return {count: state.count-action.amount};
         default:
             return state;
     }
@@ -40,14 +44,15 @@ class Store {
     }
 }
 
-const store = new Store(UpdateState,state);
+
+const store = new Store(UpdateState,initialState);
 
 // console.log(store);
 
 
 
-const unsubscribe = store.subscribe(()=>console.log('subscribe1 = '+ store.state));
-store.subscribe(()=>console.log('subscribe2 = '+ store.state));
+const unsubscribe = store.subscribe(()=>console.log('subscribe1 = '+ store.state.count));
+store.subscribe(()=>console.log('subscribe2 = '+ store.state.count));
 store.update(incrementAction);
 unsubscribe();
 store.update(decrementAction);
@@ -55,12 +60,3 @@ store.update(decrementAction);
 
 
 
-
-
-
-//OLD
-// state = UpdateState(state,incrementAction);
-
-// state = UpdateState(state,decrementAction);
-
-// console.log(state);
