@@ -7,6 +7,8 @@ export function UpdateState(state,action){
             return {count: state.count+action.amount};
         case 'decrement':
             return {count: state.count-action.amount};
+        case 'reset':
+            return {count: action.amount};
         default:
             return state;
     }
