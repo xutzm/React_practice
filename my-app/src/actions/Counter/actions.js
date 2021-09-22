@@ -1,9 +1,9 @@
 
 //actions
 export const actions = {
-    incrementAction : {type:'increment',amount:1},
-    decrementAction : {type:'decrement',amount:1},
-    resetAction : {type:'reset',amount:0}
+    incrementAction : {type:'increment',payLoad:1},
+    decrementAction : {type:'decrement',payLoad:1},
+    resetAction : {type:'reset',payLoad:0}
 }
 
 

@@ -20,21 +20,22 @@ import InputTextPage from './components/InputTextPage';
 import { actions } from './actions/Counter/actions';
 
 //reducers
-import {UpdateState} from './reducers/Counter/reducer'
+import {counerReducer} from './reducers/Counter/reducer'
 
 //store
 import {Store} from './store/Counter/store'
 
-//start state
+
+
+function App() {
+
+
+  //start state
 const initialState = {
   count:0,
 }
 
-
-
-const store = new Store(UpdateState,initialState);
-
-function App() {
+const store = new Store(counerReducer,initialState);
 
   let incrementActionCreate = () => {
     store.update(actions.incrementAction);
@@ -56,7 +57,7 @@ function App() {
     <Header/>
     <div className="App">
       <div className="counter">
-      <h2>{initialState.count}</h2>
+      <h2>{store.state.count}</h2>
         <button onClick={incrementActionCreate}>Up</button>
         <button onClick={decrementActionCreate}>Downd</button>
         <button onClick={resetActionCreate}>Reset</button>

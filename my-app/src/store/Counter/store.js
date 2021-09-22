@@ -1,8 +1,11 @@
+const defaultState = {
+    count:0,
+  }
 
 
 export class Store { 
-    constructor(UpdateState,state){
-        this._updateState = UpdateState;
+    constructor(counerReducer,state=defaultState){
+        this._reducer = counerReducer;
         this._state=state;
         this._callbacks = [];
     }
@@ -10,7 +13,7 @@ export class Store {
         return this._state
     }
     update(action){
-        this._state = this._updateState(this._state,action);
+        this._state = this._reducer(this._state,action);
         this._callbacks.forEach(callback => callback());
     }
     subscribe(callback){
@@ -20,18 +23,6 @@ export class Store {
 }
 
 
-// const store = new Store(UpdateState,initialState);
-
-// console.log(store);
-
-
-
-// const unsubscribe = store.subscribe(()=>console.log('subscribe1 = '+ store.state.count));
-// store.subscribe(()=>console.log('subscribe2 = '+ store.state.count));
-// store.update(actions.incrementAction);
-// unsubscribe();
-// store.update(actions.decrementAction);
-// store.update(actions.decrementAction);
 
 
 
