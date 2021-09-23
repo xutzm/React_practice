@@ -29,26 +29,20 @@ import {Store} from './store/Counter/store'
 
 function App() {
 
-
-  //start state
-const initialState = {
-  count:0,
-}
-
-const store = new Store(counerReducer,initialState);
+const store = new Store(counerReducer);
 
   let incrementActionCreate = () => {
-    store.update(actions.incrementAction);
+    store.dispatch(actions.incrementAction);
     console.log(store);
   }
 
   let decrementActionCreate = () => {
-    store.update(actions.decrementAction);
+    store.dispatch(actions.decrementAction);
     console.log(store);
   }
 
   let resetActionCreate = () => {
-    store.update(actions.resetAction);
+    store.dispatch(actions.resetAction);
     console.log(store);
   }
 

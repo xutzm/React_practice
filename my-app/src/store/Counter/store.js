@@ -12,7 +12,7 @@ export class Store {
     get state(){
         return this._state
     }
-    update(action){
+    dispatch(action){
         this._state = this._reducer(this._state,action);
         this._callbacks.forEach(callback => callback());
     }
@@ -21,6 +21,7 @@ export class Store {
         return () => this._callbacks=this._callbacks.filter(cb=>cb!==callback);
     }
 }
+
 
 
 
