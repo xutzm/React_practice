@@ -1,5 +1,5 @@
 
-  import React, {  useState, useEffect } from 'react';
+  import React, {  useReducer, useEffect } from 'react';
 
 import './App.css';
 
@@ -34,13 +34,15 @@ function App() {
 
   useEffect(() => {
     // Обновляем название докуммента, используя API браузера
-    document.title = `Вы нажали ${count} раз`;
+    document.title = `Вы нажали ${state.count} раз`;
+
+    store.subscribe(()=>console.log('123'))
   });
 
 
 const store = new Store(counerReducer);
 
-const [count, setCount] = useState(5);
+const [state, dispatch] = useReducer(counerReducer, store.state)
 
 let incrementActionCreate = () => {
   store.dispatch(actions.incrementAction);
@@ -69,8 +71,8 @@ let incrementActionCreate = () => {
         <button onClick={resetActionCreate}>Reset</button>
       </div>
 
-      <p>ХУК Вы кликнули {count} раз</p>
-        <button onClick={() => setCount(count + 1)}>
+      <p>ХУК Вы кликнули {state.count} раз</p>
+        <button onClick={()=>dispatch(actions.incrementAction)}>
           Кликни меня!
         </button>
     </div>
