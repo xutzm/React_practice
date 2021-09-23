@@ -1,4 +1,6 @@
 
+  import React, {  useState, useEffect } from 'react';
+
 import './App.css';
 
 import {BrowserRouter,Route} from "react-router-dom";
@@ -27,14 +29,23 @@ import {Store} from './store/Counter/store'
 
 
 
+
 function App() {
+
+  useEffect(() => {
+console.log('useEFF');
+  });
+
 
 const store = new Store(counerReducer);
 
-  let incrementActionCreate = () => {
-    store.dispatch(actions.incrementAction);
-    console.log(store);
-  }
+const [count, setCount] = useState(5);
+
+let incrementActionCreate = () => {
+  store.dispatch(actions.incrementAction);
+  console.log(store);
+}
+
 
   let decrementActionCreate = () => {
     store.dispatch(actions.decrementAction);
@@ -56,6 +67,11 @@ const store = new Store(counerReducer);
         <button onClick={decrementActionCreate}>Downd</button>
         <button onClick={resetActionCreate}>Reset</button>
       </div>
+
+      <p>ХУК Вы кликнули {count} раз</p>
+        <button onClick={() => setCount(count + 1)}>
+          Кликни меня!
+        </button>
     </div>
     <Route path="/IndexPage" component={IndexPage}/>
     <Route path="/InputTextPage" component={InputTextPage}/>
