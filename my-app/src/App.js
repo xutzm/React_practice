@@ -33,7 +33,8 @@ import {Store} from './store/Counter/store'
 function App() {
 
   useEffect(() => {
-console.log('useEFF');
+    // Обновляем название докуммента, используя API браузера
+    document.title = `Вы нажали ${count} раз`;
   });
 
 
