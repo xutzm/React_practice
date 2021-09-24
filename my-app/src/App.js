@@ -31,7 +31,7 @@ import store from './store/Counter/funcStore'
 function App(props) {
 
   useEffect(() => {
-    store.subscribe(()=>console.log('123'))
+    store.subscribe(()=>console.log('APP отрисован заново'))
   });
 
 
