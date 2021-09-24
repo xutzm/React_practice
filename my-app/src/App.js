@@ -1,5 +1,5 @@
 
-  import React, {  useReducer, useEffect } from 'react';
+  import React, {  useEffect } from 'react';
 
 import './App.css';
 
@@ -21,28 +21,21 @@ import InputTextPage from './components/InputTextPage';
 //actions
 import { actions } from './actions/Counter/actions';
 
-//reducers
-import {counerReducer} from './reducers/Counter/reducer'
-
-//store
-import {Store} from './store/Counter/store'
+import store from './store/Counter/funcStore'
 
 
 
 
-function App() {
+
+
+function App(props) {
 
   useEffect(() => {
-    // Обновляем название докуммента, используя API браузера
-    document.title = `Вы нажали ${state.count} раз`;
-
     store.subscribe(()=>console.log('123'))
   });
 
 
-const store = new Store(counerReducer);
 
-const [state, dispatch] = useReducer(counerReducer, store.state)
 
 let incrementActionCreate = () => {
   store.dispatch(actions.incrementAction);
@@ -65,16 +58,11 @@ let incrementActionCreate = () => {
     <Header/>
     <div className="App">
       <div className="counter">
-      <h2>{store.state.count}</h2>
+      <h2>{props.state.count}</h2> 
         <button onClick={incrementActionCreate}>Up</button>
         <button onClick={decrementActionCreate}>Downd</button>
         <button onClick={resetActionCreate}>Reset</button>
       </div>
-
-      <p>ХУК Вы кликнули {state.count} раз</p>
-        <button onClick={()=>dispatch(actions.incrementAction)}>
-          Кликни меня!
-        </button>
     </div>
     <Route path="/IndexPage" component={IndexPage}/>
     <Route path="/InputTextPage" component={InputTextPage}/>

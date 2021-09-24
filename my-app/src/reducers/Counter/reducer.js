@@ -3,7 +3,7 @@ const defaultState = {
   }
 
 //reducer
-export function counerReducer(state=defaultState,action){
+export function counterReducer(state=defaultState,action){
     switch(action.type){
         case 'increment':
             return {count: state.count+action.payLoad};
