@@ -1,18 +1,8 @@
 
-  import React, {  useEffect } from 'react';
+  import React from 'react';
 
 import './App.css';
 
-import {BrowserRouter,Route} from "react-router-dom";
-
-//struct
-import Header from './components/Header/Header';
-
-
-
-//pages
-import IndexPage from './components/IndexPage';
-import InputTextPage from './components/InputTextPage';
 
 
 
@@ -20,54 +10,58 @@ import InputTextPage from './components/InputTextPage';
 
 //actions
 import { actions } from './actions/Counter/actions';
+//store
+import {Store} from './store/Counter/oopStore'
+//reducer
+import {counterReducer} from './reducers/Counter/reducer'
 
-import store from './store/Counter/funcStore'
-
-
-
-
-
-
-function App(props) {
-
-  useEffect(() => {
-    store.subscribe(()=>console.log('APP отрисован заново'))
-  });
+//init store
+const store = new Store(counterReducer);
 
 
 
 
-let incrementActionCreate = () => {
-  store.dispatch(actions.incrementAction);
-  console.log(store);
-}
 
 
-  let decrementActionCreate = () => {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.state = store.state;
+  }
+
+  componentDidMount(){
+    store.subscribe(()=>this.forceUpdate());
+  }
+
+  incrementActionCreator(){
+    store.dispatch(actions.incrementAction);
+  }
+  
+  decrementActionCreator(){
     store.dispatch(actions.decrementAction);
-    console.log(store);
   }
-
-  let resetActionCreate = () => {
+  
+  resetActionCreator(){
     store.dispatch(actions.resetAction);
-    console.log(store);
   }
 
-  return (
-    <BrowserRouter>
-    <Header/>
-    <div className="App">
+  render(){
+    return(
+      <div className="App">
       <div className="counter">
-      <h2>{props.state.count}</h2> 
-        <button onClick={incrementActionCreate}>Up</button>
-        <button onClick={decrementActionCreate}>Down</button>
-        <button onClick={resetActionCreate}>Reset</button>
+        <h2>{store.state.count}</h2>
+        <button onClick={this.incrementActionCreator}>Up</button>
+        <button onClick={this.decrementActionCreator}>Down</button>
+        <button onClick={this.resetActionCreator}>Reset</button>
       </div>
-    </div>
-    <Route path="/IndexPage" component={IndexPage}/>
-    <Route path="/InputTextPage" component={InputTextPage}/>
-    </BrowserRouter>
-  );
+      </div>
+    )
+  }
 }
+
+
+
+
+
 
 export default App;

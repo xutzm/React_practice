@@ -7,23 +7,12 @@ import './index.css';
 import App from './App';
 
 
-
-import store from './store/Counter/funcStore'
-
-
-
- const rerenderAll = (state)=>{
-  ReactDOM.render(
+ReactDOM.render(
     <React.StrictMode>
-      <App state={store.getState()}/>
+      <App/>
     </React.StrictMode>,
     document.getElementById('root')
   );
-  }
-
-  store.subscribe(rerenderAll)
-
-  rerenderAll(store.getState());
 
 
 // If you want to start measuring performance in your app, pass a function
