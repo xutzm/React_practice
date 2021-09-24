@@ -60,7 +60,7 @@ let incrementActionCreate = () => {
       <div className="counter">
       <h2>{props.state.count}</h2> 
         <button onClick={incrementActionCreate}>Up</button>
-        <button onClick={decrementActionCreate}>Downd</button>
+        <button onClick={decrementActionCreate}>Down</button>
         <button onClick={resetActionCreate}>Reset</button>
       </div>
     </div>
