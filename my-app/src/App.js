@@ -11,7 +11,7 @@ import './App.css';
 //actions
 import { actions } from './actions/Counter/actions';
 //store
-import {createStore} from './store/Counter/reduxFuncStore'
+import {createStore} from 'redux'
 //reducer
 import {counterReducer} from './reducers/Counter/reducer'
 
