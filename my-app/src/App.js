@@ -27,6 +27,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     // this.state = store.state;
+    this.incrementActionCreator=this.incrementActionCreator.bind(this);
+    this.decrementActionCreator=this.decrementActionCreator.bind(this);
+    this.resetActionCreator=this.resetActionCreator.bind(this);
   }
 
   componentDidMount(){
