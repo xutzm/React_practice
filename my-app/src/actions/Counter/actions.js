@@ -7,7 +7,13 @@ export const actions = {
 }
 
 
-
+export function getActions(payLoad=1){
+return {
+    incrementAction : {type:'increment',payLoad:payLoad},
+    decrementAction : {type:'decrement',payLoad:payLoad},
+    resetAction : {type:'reset',payLoad:0}
+}
+}
 
 
 

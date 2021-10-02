@@ -9,7 +9,8 @@ import './App.css';
 
 
 //actions
-import { actions } from './actions/Counter/actions';
+import { getActions } from './actions/Counter/actions';
+// import { actions } from './actions/Counter/actions';
 //store
 import {createStore} from 'redux'
 //reducer
@@ -27,25 +28,34 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     // this.state = store.state;
+    this.amount = React.createRef();
+
     this.incrementActionCreator=this.incrementActionCreator.bind(this);
     this.decrementActionCreator=this.decrementActionCreator.bind(this);
     this.resetActionCreator=this.resetActionCreator.bind(this);
+    this.getAmount=this.getAmount.bind(this);
   }
 
   componentDidMount(){
     store.subscribe(()=>this.forceUpdate());
   }
 
+  getAmount(){
+    let value = parseInt(this.amount.current.value || 1)
+    return value;
+  }
+
+
   incrementActionCreator(){
-    store.dispatch(actions.incrementAction);
+    store.dispatch(getActions(this.getAmount()).incrementAction);
   }
   
   decrementActionCreator(){
-    store.dispatch(actions.decrementAction);
+    store.dispatch(getActions(this.getAmount()).decrementAction);
   }
   
   resetActionCreator(){
-    store.dispatch(actions.resetAction);
+    store.dispatch(getActions().resetAction);
   }
 
   render(){
@@ -57,6 +67,7 @@ class App extends React.Component {
         <button onClick={this.incrementActionCreator}>Up</button>
         <button onClick={this.decrementActionCreator}>Down</button>
         <button onClick={this.resetActionCreator}>Reset</button>
+        На число <input type="text" ref={this.amount} defaultValue="0"></input>
       </div>
       </div>
     )
