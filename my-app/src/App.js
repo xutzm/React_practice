@@ -17,8 +17,8 @@ import {createStore} from 'redux'
 import {counterReducer} from './reducers/Counter/reducer'
 
 //init store
-const store = createStore(counterReducer);
-
+const store = createStore(counterReducer,JSON.parse(localStorage['redux-store']));
+store.subscribe(()=>localStorage['redux-store'] = JSON.stringify(store.getState()));
 
 
 
@@ -29,7 +29,7 @@ class App extends React.Component {
     super(props);
     // this.state = store.state;
     this.amount = React.createRef();
-
+    
     this.incrementActionCreator=this.incrementActionCreator.bind(this);
     this.decrementActionCreator=this.decrementActionCreator.bind(this);
     this.resetActionCreator=this.resetActionCreator.bind(this);
@@ -59,11 +59,12 @@ class App extends React.Component {
   }
 
   render(){
-    const count = store.getState().count;
+    // const count = store.getState().count;
+    const count = JSON.parse(localStorage['redux-store']);
     return(
       <div className="App">
       <div className="counter">
-        <h2>{count}</h2>
+        <h2>{count.count}</h2>
         <button onClick={this.incrementActionCreator}>Up</button>
         <button onClick={this.decrementActionCreator}>Down</button>
         <button onClick={this.resetActionCreator}>Reset</button>
