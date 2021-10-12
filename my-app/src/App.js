@@ -33,7 +33,6 @@ class App extends React.Component {
     this.incrementActionCreator=this.incrementActionCreator.bind(this);
     this.decrementActionCreator=this.decrementActionCreator.bind(this);
     this.resetActionCreator=this.resetActionCreator.bind(this);
-    this.wievten=this.wievten.bind(this);
     this.getAmount=this.getAmount.bind(this);
   }
 
@@ -60,9 +59,7 @@ class App extends React.Component {
     this.setState(store.dispatch(getActions().resetAction))
   }
 
-  wievten(){
-    this.setState({count:999999})
-  }
+
   render(){
     // const count = store.getState().count;
     const count = JSON.parse(localStorage['redux-store']);
@@ -71,8 +68,6 @@ class App extends React.Component {
       <div className="App">
       <div className="counter">
         <h2>{count.count}</h2>
-        <h2>{this.state.count}</h2>
-        <button onClick={this.wievten}>показать 9999999</button>
         <button onClick={this.incrementActionCreator}>Up</button>
         <button onClick={this.decrementActionCreator}>Down</button>
         <button onClick={this.resetActionCreator}>Reset</button>
