@@ -27,18 +27,19 @@ store.subscribe(()=>localStorage['redux-store'] = JSON.stringify(store.getState(
 class App extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = store.state;
+    this.state = store.getState();
     this.amount = React.createRef();
     
     this.incrementActionCreator=this.incrementActionCreator.bind(this);
     this.decrementActionCreator=this.decrementActionCreator.bind(this);
     this.resetActionCreator=this.resetActionCreator.bind(this);
+    this.wievten=this.wievten.bind(this);
     this.getAmount=this.getAmount.bind(this);
   }
 
-  componentDidMount(){
-    store.subscribe(()=>this.forceUpdate());
-  }
+  // componentDidMount(){
+  //   store.subscribe(()=>this.forceUpdate());
+  // }
 
   getAmount(){
     let value = parseInt(this.amount.current.value || 1)
@@ -47,24 +48,31 @@ class App extends React.Component {
 
 
   incrementActionCreator(){
-    store.dispatch(getActions(this.getAmount()).incrementAction);
+    
+    this.setState(store.dispatch(getActions(this.getAmount()).incrementAction))
   }
   
   decrementActionCreator(){
-    store.dispatch(getActions(this.getAmount()).decrementAction);
+    this.setState(store.dispatch(getActions(this.getAmount()).decrementAction))
   }
   
   resetActionCreator(){
-    store.dispatch(getActions().resetAction);
+    this.setState(store.dispatch(getActions().resetAction))
   }
 
+  wievten(){
+    this.setState({count:999999})
+  }
   render(){
     // const count = store.getState().count;
     const count = JSON.parse(localStorage['redux-store']);
+    console.log(this.state);
     return(
       <div className="App">
       <div className="counter">
         <h2>{count.count}</h2>
+        <h2>{this.state.count}</h2>
+        <button onClick={this.wievten}>показать 9999999</button>
         <button onClick={this.incrementActionCreator}>Up</button>
         <button onClick={this.decrementActionCreator}>Down</button>
         <button onClick={this.resetActionCreator}>Reset</button>
