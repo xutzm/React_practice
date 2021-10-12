@@ -27,7 +27,7 @@ store.subscribe(()=>localStorage['redux-store'] = JSON.stringify(store.getState(
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = store.getState();
+  
     this.amount = React.createRef();
     
     this.incrementActionCreator=this.incrementActionCreator.bind(this);
@@ -63,7 +63,7 @@ class App extends React.Component {
   render(){
     // const count = store.getState().count;
     const count = JSON.parse(localStorage['redux-store']);
-    console.log(this.state);
+    console.log(store.getState());
     return(
       <div className="App">
       <div className="counter">
