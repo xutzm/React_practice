@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import {useEffect, useState,useRef,useMemo} from 'react'
+import {useEffect, useState,useRef,useMemo, useCallback} from 'react'
+import Componento from './Componento'
 
 const getStartPoint = ()=>{
-  console.log('getStartPoint')
-  return 0
+  console.log('getStartPoint func in useState')
+  return 1
 }
 
 const createItog = (point)=>{
-  console.log('createItog')
+  console.log('createItog func in const itog ')
 for (let i =0;i<=1000000000;i++){
   
 }
@@ -39,6 +40,11 @@ function App() {
 
   // const itog = createItog(point)
 
+const generateArray = useCallback(()=>{
+  console.log('generateArray func in Componento in let newarr')
+  return new Array(point).fill('none').map((_,i)=>'element '+i)
+},[point])
+
   const itog = useMemo(()=>{
     createItog(point)
   },[point])
@@ -60,12 +66,12 @@ useEffect(()=>{
   for (let i =0;i<=3;i++){
     console.log(i)
   }
-  console.log('type_change')
+  console.log('type_change useEffect of type')
 },[type])
 
 
 useEffect(()=>{
-  console.log('set CoordinateLis start')
+  console.log('set CoordinateLis start useEffect of []')
   // window.addEventListener('mousemove',mouseCoordinateHandler)
 
   return ()=>{
@@ -75,7 +81,7 @@ useEffect(()=>{
 },[])
 
 useEffect(()=>{
-  console.log('removeCoordinateLis start')
+  console.log('removeCoordinateLis start useEffect of [removeCoordinateLis]')
   return ()=>{
     console.log('removeCoordinateLis remove [removeCoordinateLis]')
     window.removeEventListener('mousemove',mouseCoordinateHandler)
@@ -137,9 +143,7 @@ const inputText2Change = (e)=>{
         <p>
           Итог {itog}
         </p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Рендеров: {renderCount.current}</p>
 <p>{point}</p>
 <button onClick={()=>setPoint(prevPoint=>prevPoint+1)}>SetUp</button>
 <button onClick={setPointUp}>SetUp to 2</button>
@@ -154,7 +158,7 @@ const inputText2Change = (e)=>{
     </p>
     <button onClick={()=>setRemoveCoordinateLis(true)}>remove</button>
     
-    <p>Рендеров: {renderCount.current}</p>
+
     <p>Изменений поля: {changeCount.current}</p>
    
     <form onClick={(e)=>formClick(e)}>
@@ -167,6 +171,7 @@ const inputText2Change = (e)=>{
     <p>text2 текущее состояние: {text2}</p>
     <p>text2 Прошлое состояние: {prevStateText2.current}</p>
     text2<input type='text' onChange={(e)=>inputText2Change(e)}></input>
+    <Componento generateArray={generateArray}/>
     </header>
     </div>
 
