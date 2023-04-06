@@ -1,30 +1,47 @@
 import logo from './logo.svg';
 import './App.css';
-import {useEffect, useState,useRef} from 'react'
+import {useEffect, useState,useRef,useMemo} from 'react'
 
 const getStartPoint = ()=>{
   console.log('getStartPoint')
   return 0
 }
 
+const createItog = (point)=>{
+  console.log('createItog')
+for (let i =0;i<=1000000000;i++){
+  
+}
+  return point*2
+}
+
+// const styles = {
+//   color: isColor ? 'red' : 'green'
+// }
+
 function App() {
-  console.log('App')
+  console.log('App start')
   // const point = useState(0)
   // console.log(point)
-  const [type,setType] = useState('user')
+  const [type,setType] = useState()
   const [obj,setObj] = useState({name:'ivan',age:30})
   const [coordinate,setCoordinate] = useState({x:0,y:0})
   const [removeCoordinateLis,setRemoveCoordinateLis]=useState(false)
   const [text2,setText2]=useState('')
-
   const [point,setPoint] = useState(()=>getStartPoint()) // <--- ONCE 
   // const [point,setPoint] = useState(getStartPoint()) // <--- every render start (setPoint)
   // const [point,setPoint] = useState(0)
-
   const changeCount = useRef(0)
   const renderCount = useRef(0)
   const inputForm = useRef(null)
   const prevStateText2 = useRef('')
+
+
+  // const itog = createItog(point)
+
+  const itog = useMemo(()=>{
+    createItog(point)
+  },[point])
 
   const mouseCoordinateHandler = (event)=>{
     setCoordinate({
@@ -40,13 +57,16 @@ useEffect(()=>{
 
 
 useEffect(()=>{
+  for (let i =0;i<=3;i++){
+    console.log(i)
+  }
   console.log('type_change')
 },[type])
 
 
 useEffect(()=>{
   console.log('set CoordinateLis start')
-  window.addEventListener('mousemove',mouseCoordinateHandler)
+  // window.addEventListener('mousemove',mouseCoordinateHandler)
 
   return ()=>{
     console.log('removeCoordinateLis remove []')
@@ -74,6 +94,7 @@ const setPointUp = ()=>{
   setPoint(prevPoint=>prevPoint+1)
   setPoint(prevPoint=>prevPoint+1)
 }
+
 
 const setObjfunc = ()=>{  // <--non change all obj, only 'name'
   setObj((prev=>{
@@ -114,10 +135,14 @@ const inputText2Change = (e)=>{
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+          Итог {itog}
+        </p>
+        <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
 <p>{point}</p>
-<button onClick={setPointUp}>SetUp</button>
+<button onClick={()=>setPoint(prevPoint=>prevPoint+1)}>SetUp</button>
+<button onClick={setPointUp}>SetUp to 2</button>
 
 <p>{JSON.stringify(obj)}</p>
 <button onClick={setObjfunc}>SetObj</button>
