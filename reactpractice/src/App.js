@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import {useEffect, useState,useRef,useMemo, useCallback} from 'react'
 import Componento from './Componento'
+import Contex from './Contex';
+
 
 const getStartPoint = ()=>{
   console.log('getStartPoint func in useState')
@@ -173,6 +175,7 @@ const inputText2Change = (e)=>{
     text2<input type='text' onChange={(e)=>inputText2Change(e)}></input>
     <Componento generateArray={generateArray}/>
     </header>
+    <Contex/>
     </div>
 
   );
