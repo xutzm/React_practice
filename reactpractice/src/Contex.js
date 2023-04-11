@@ -11,11 +11,15 @@ export default function Contex(){
     }
 
     return (
-        <ContextAlert.Provider value={alert}>
+        <ContextAlert.Provider value={{
+            'alert':alert,
+            'SetContext':SetContext
+        } }>
         <div>
             <h1>Контекст</h1>
             <Contex_alert/>
-            <Contex_button SetContext={SetContext}/>
+            <Contex_button/>
+            {/* <Contex_button SetContext={SetContext}/> */}
         </div>
         </ContextAlert.Provider>
     )
