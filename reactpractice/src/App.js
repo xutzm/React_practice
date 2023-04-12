@@ -3,7 +3,7 @@ import './App.css';
 import {useEffect, useState,useRef,useMemo, useCallback} from 'react'
 import Componento from './Componento'
 import Contex from './Contex';
-
+import MyHooks from './MyHooks';
 
 const getStartPoint = ()=>{
   console.log('getStartPoint func in useState')
@@ -176,6 +176,7 @@ const inputText2Change = (e)=>{
     <Componento generateArray={generateArray}/>
     </header>
     <Contex/>
+    <MyHooks/>
     </div>
 
   );
