@@ -5,7 +5,9 @@ import Componento from './Componento'
 import Contex from './Contex';
 import MyHooks from './MyHooks';
 
-
+import {Spin} from 'antd'
+import {Suspense,lazy} from 'react'
+const LazyComp = lazy(()=>import('./LazyComp'));
 
 const getStartPoint = ()=>{
   console.log('getStartPoint func in useState')
@@ -28,6 +30,8 @@ function App() {
   console.log('App start')
   // const point = useState(0)
   // console.log(point)
+  const [lazystate,setLazystate]=useState(false)
+
   const [type,setType] = useState()
   const [obj,setObj] = useState({name:'ivan',age:30})
   const [coordinate,setCoordinate] = useState({x:0,y:0})
@@ -141,12 +145,25 @@ const inputText2Change = (e)=>{
 }
 
 function CreateError(){
-  throw new Error('💥 CABOOM 💥')
+  // throw new Error('BOOM')
+}
+
+function loadLazy(){
+  setLazystate(!lazystate)
 }
 
   return (
     <div className="App">
-      <CreateError/>
+      {lazystate && (
+      <Suspense fallback={<Spin/>}>
+        <LazyComp/>
+      </Suspense>
+      )}
+      <button onClick={loadLazy}>
+        Подгрузить Lazy
+      </button>
+
+            <CreateError/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
