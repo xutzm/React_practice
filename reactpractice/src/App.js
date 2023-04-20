@@ -5,6 +5,8 @@ import Componento from './Componento'
 import Contex from './Contex';
 import MyHooks from './MyHooks';
 
+
+
 const getStartPoint = ()=>{
   console.log('getStartPoint func in useState')
   return 1
@@ -123,8 +125,8 @@ const formClick = (e)=>{
  console.log(e.target)
  console.log(e.target.value)
  console.log(e.currentTarget)
-
 }
+
 const inputChange = (e)=>{
 changeCount.current++ //нужен перерендер для отображения, не вызывает рендер при изменении
 console.log('form input is ',inputForm.current.value)
@@ -138,8 +140,13 @@ const inputText2Change = (e)=>{
   setText2(e.target.value)
 }
 
+function CreateError(){
+  throw new Error('💥 CABOOM 💥')
+}
+
   return (
     <div className="App">
+      <CreateError/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
