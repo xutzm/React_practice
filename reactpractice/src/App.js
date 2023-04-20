@@ -154,6 +154,7 @@ function loadLazy(){
 
   return (
     <div className="App">
+
       {lazystate && (
       <Suspense fallback={<Spin/>}>
         <LazyComp/>
